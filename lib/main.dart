@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'widgets/app_button.dart';
 import 'widgets/app_input.dart';
 import 'widgets/app_select.dart';
+import 'widgets/animated_counter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,7 +38,7 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Custom Widgets")),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -65,6 +66,13 @@ class _DemoPageState extends State<DemoPage> {
               onChanged: (val) {
                 setState(() => _selectedValue = val);
               },
+            ),
+            const SizedBox(height: 24),
+            const AnimatedCounter(
+              initialValue: 0,
+              maxValue: 10,
+              animationDuration: Duration(milliseconds: 300),
+              primaryColor: Colors.purple,
             ),
           ],
         ),
